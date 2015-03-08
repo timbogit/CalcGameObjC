@@ -41,7 +41,6 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
     
     [self loadSoundEffects];
     [self addEquationLabelAndAnswerButtons];
-    self.score = self.tries = 0;
     [self addScoreAndTriesLabels];
 }
 
@@ -97,7 +96,7 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
 }
 
 -(void)addScoreAndTriesLabels {
-    NSUInteger margin = 15, width = 80, height = 20, spacing = 3;
+    NSUInteger margin = 15, width = 80, height = 20;
     UILabel *scoreLabel = [[UILabel alloc]
                            initWithFrame:CGRectMake(self.view.frame.size.width - (width + margin / 2), margin, width, height)];
     scoreLabel.font = [UIFont systemFontOfSize:15.f];
@@ -110,7 +109,7 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
     [self updateScoreWithScore:0];
 
     UILabel *triesLabel = [[UILabel alloc]
-                           initWithFrame:CGRectMake(self.view.frame.size.width - (width + margin / 2), margin + height + spacing, width, height)];
+                           initWithFrame:CGRectMake(margin / 2, margin, width, height)];
     triesLabel.font = [UIFont systemFontOfSize:15.f];
     triesLabel.textAlignment = NSTextAlignmentLeft;
     triesLabel.textColor = [UIColor lightTextColor];
