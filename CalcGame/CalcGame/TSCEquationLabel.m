@@ -19,7 +19,8 @@
     self.text = equation.description;
     self.textAlignment = NSTextAlignmentCenter;
     self.textColor = [UIColor whiteColor];
-    self.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor purpleColor];
+    self.alpha = 0.65f;
     
     return self;
 }

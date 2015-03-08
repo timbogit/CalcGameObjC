@@ -60,9 +60,11 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
                          self.equationLabel.text =
                             [self.equationLabel.text stringByReplacingOccurrencesOfString:@"?"
                                                                                withString:self.equation.result];
-                         [UIView animateWithDuration:1.25f
+                         [UIView animateWithDuration:1.5f
                                           animations: ^{
                                               self.equationLabel.alpha = 1.f;
+                                              self.equationLabel.textColor = [UIColor blueColor];
+                                              self.equationLabel.backgroundColor = [UIColor greenColor];
                                               self.equationLabel.transform = CGAffineTransformIdentity;
                                           }
                                           completion: ^(BOOL finished) {
@@ -147,6 +149,7 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
     button.alpha = 0.75f;
     button.titleLabel.font = [UIFont systemFontOfSize:30.f];
     button.titleLabel.alpha = 1.0f;
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     SEL actionForTapping = success ? @selector(successButtonTapped:) : @selector(failureButtonTapped:);
     [button setTitle:value forState:UIControlStateNormal];
     [button addTarget:self action:actionForTapping forControlEvents:UIControlEventTouchUpInside];
