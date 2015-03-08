@@ -31,7 +31,6 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
 
 
 #pragma mark - UIViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -42,6 +41,7 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
     [self loadSoundEffects];
     [self addEquationLabelAndAnswerButtons];
     [self addScoreAndTriesLabels];
+    [self addSwipeLeftToResetScoresAndTries];
 }
 
 #pragma mark - Button action handlers
@@ -81,6 +81,12 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
                      }];
 }
 
+#pragma mark - gesture recognizer actions
+
+-(void)didSwipeLeft:(UISwipeGestureRecognizer *)sender {
+    [self updateScoreWithScore:0];
+    [self updateTriesWithTries:0];
+}
 
 #pragma mark - helper methods
 
@@ -93,6 +99,13 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
         }
     }
     return answers;
+}
+
+
+- (void)addSwipeLeftToResetScoresAndTries {
+    UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeLeft:)];
+    swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeGestureRecognizer];
 }
 
 -(void)addScoreAndTriesLabels {
