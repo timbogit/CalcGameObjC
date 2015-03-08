@@ -141,6 +141,10 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
     width = height = (self.view.frame.size.width - margin * 4) / 3;
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.backgroundColor = [UIColor grayColor];
+    button.alpha = 0.75f;
+    button.titleLabel.font = [UIFont systemFontOfSize:30.f];
+    button.titleLabel.alpha = 1.0f;
     SEL actionForTapping = success ? @selector(successButtonTapped:) : @selector(failureButtonTapped:);
     [button setTitle:value forState:UIControlStateNormal];
     [button addTarget:self action:actionForTapping forControlEvents:UIControlEventTouchUpInside];
