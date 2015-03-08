@@ -63,8 +63,8 @@ static OperationBlock const DIVIDE_BY_OPERATION = ^(NSArray *operands){
 
 - (instancetype)init
 {
-    return [self initWithOperator:EQUATION_ADDITION_OPERATOR
-                  operands:@[@(arc4random_uniform(10)), @(arc4random_uniform(10))]];
+    return [self initWithOperator:(arc4random_uniform(100) % 2 == 0) ? EQUATION_SUBTRACTION_OPERATOR : EQUATION_ADDITION_OPERATOR
+                  operands:@[@(arc4random_uniform(100)), @(arc4random_uniform(100))]];
 }
 
 -(NSString *)description {

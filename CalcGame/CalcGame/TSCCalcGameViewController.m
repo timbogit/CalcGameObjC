@@ -81,7 +81,7 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
     static NSMutableArray *answers;
     if (!answers) {
         answers = [[NSMutableArray alloc] initWithCapacity:NUMBER_OF_ANSWERS];
-        for (int i=0; i < (NUMBER_OF_ANSWERS + 1) * 2; i++) {
+        for (int i=0; i < 200; i++) {
             answers[i] = [NSNumber numberWithInt:i];
         }
     }
