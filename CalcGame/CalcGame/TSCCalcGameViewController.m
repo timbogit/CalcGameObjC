@@ -10,7 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "TSCEquation.h"
 #import "TSCEquationLabel.h"
-#import "NSMutableArray+TSCShuffling.h"
+#import "NSMutableArray+TSCShufflingAndReversing.h"
 
 static NSUInteger const NUMBER_OF_ANSWERS = 9;
 //static NSIndexSet *const ANSWER_INDEXES [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1,9)];

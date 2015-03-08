@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSMutableArray (TSCShuffling)
+@interface NSMutableArray (TSCShufflingAndReversing)
 - (void)tsc_shuffle;
+- (void)tsc_reverse;
 @end

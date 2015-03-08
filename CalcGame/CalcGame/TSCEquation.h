@@ -11,9 +11,6 @@
 @interface TSCEquation : NSObject
 
 @property (strong, nonatomic, readonly) NSNumber *result;
-@property (strong, nonatomic, readonly) NSString *operator;
-@property (strong, nonatomic, readonly) NSArray *operands;
-
 
 - (instancetype)initWithOperator:(NSString *)operator
                         operands:(NSArray *)operands;
