@@ -20,6 +20,10 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
 @property (nonatomic,strong)        TSCEquation       *equation;
 @property (nonatomic,weak) IBOutlet TSCEquationLabel  *equationLabel;
 @property (nonatomic,strong)        NSMutableArray    *buttons;
+@property (nonatomic,assign)        NSUInteger        score;
+@property (nonatomic,assign)        NSUInteger        tries;
+@property (nonatomic,weak) IBOutlet UILabel           *scoreLabel;
+@property (nonatomic,weak) IBOutlet UILabel           *triesLabel;
 
 @end
 
@@ -36,8 +40,9 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
     self.view.userInteractionEnabled = YES;
     
     [self loadSoundEffects];
-    // Adding the equation label and answer buttons
     [self addEquationLabelAndAnswerButtons];
+    self.score = self.tries = 0;
+    [self addScoreAndTriesLabels];
 }
 
 #pragma mark - Button action handlers
@@ -45,6 +50,7 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
 -(void)failureButtonTapped:(UIButton *)sender {
     self.failSound.currentTime = 0.0f;
     [self.failSound play];
+    [self updateTriesWithTries:self.tries + 1];
 }
 
 -(void)successButtonTapped:(UIButton *)sender {
@@ -53,6 +59,7 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
                          self.equationLabel.alpha = 0.f;
                          self.equationLabel.transform = CGAffineTransformMakeScale(0.1f, 0.1f);
                          [self.applauseSound play];
+                         [self updateTriesWithTries:self.tries + 1];
                      }
                      completion:^(BOOL finished) {
                          self.equationLabel.text =
@@ -70,6 +77,7 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
                                               [self addEquationLabelAndAnswerButtons];
                                               [self.applauseSound stop];
                                               self.applauseSound.currentTime = 0.0f;
+                                              [self updateScoreWithScore:self.score + 1];
                                           }];
                      }];
 }
@@ -88,6 +96,41 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
     return answers;
 }
 
+-(void)addScoreAndTriesLabels {
+    NSUInteger margin = 15, width = 80, height = 20, spacing = 3;
+    UILabel *scoreLabel = [[UILabel alloc]
+                           initWithFrame:CGRectMake(self.view.frame.size.width - (width + margin / 2), margin, width, height)];
+    scoreLabel.font = [UIFont systemFontOfSize:15.f];
+    scoreLabel.textAlignment = NSTextAlignmentLeft;
+    scoreLabel.textColor = [UIColor greenColor];
+    scoreLabel.backgroundColor = [UIColor clearColor];
+    scoreLabel.alpha = 0.90f;
+    self.scoreLabel = scoreLabel;
+    [self.view addSubview:self.scoreLabel];
+    [self updateScoreWithScore:0];
+
+    UILabel *triesLabel = [[UILabel alloc]
+                           initWithFrame:CGRectMake(self.view.frame.size.width - (width + margin / 2), margin + height + spacing, width, height)];
+    triesLabel.font = [UIFont systemFontOfSize:15.f];
+    triesLabel.textAlignment = NSTextAlignmentLeft;
+    triesLabel.textColor = [UIColor lightTextColor];
+    triesLabel.backgroundColor = [UIColor clearColor];
+    triesLabel.alpha = 0.90f;
+    self.triesLabel = triesLabel;
+    [self.view addSubview:self.triesLabel];
+    [self updateTriesWithTries:0];
+}
+
+-(void)updateScoreWithScore:(NSUInteger)score {
+    self.score = score;
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %lu", (unsigned long)self.score];
+}
+
+-(void)updateTriesWithTries:(NSUInteger)tries {
+    self.tries = tries;
+    self.triesLabel.text = [NSString stringWithFormat:@"Tires: %lu", (unsigned long)self.tries];
+}
+
 -(void)addEquationLabelAndAnswerButtons {
     self.equation = [[TSCEquation alloc] init];
     [self addEquationLabel];
@@ -97,7 +140,7 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
 }
 
 -(void)addEquationLabel {
-    UILabel *eqLabel = [[TSCEquationLabel alloc] initWithParentView:self.view
+    TSCEquationLabel *eqLabel = [[TSCEquationLabel alloc] initWithParentView:self.view
                                                            equation:self.equation];
     self.equationLabel = eqLabel;
     [self.view addSubview:eqLabel];
