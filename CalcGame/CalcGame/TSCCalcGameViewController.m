@@ -106,15 +106,14 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
 -(void)addRandomButtons {
     NSMutableArray *randomValues = [[self answerRange] mutableCopy];
     [randomValues tsc_shuffle];
-    randomValues = [[randomValues subarrayWithRange:NSMakeRange(0, NUMBER_OF_ANSWERS)] mutableCopy];
+    randomValues = [[randomValues subarrayWithRange:NSMakeRange(0, NUMBER_OF_ANSWERS - 1)] mutableCopy];
     [randomValues addObject: self.equation.resultAsNumber];
-    NSArray *allValues = [[NSSet setWithArray:randomValues] allObjects];
-    NSUInteger winnerPosition = [allValues indexOfObject:self.equation.resultAsNumber];
+    [randomValues tsc_shuffle];
     
     for (int pos=0; pos < NUMBER_OF_ANSWERS; pos++) {
-        BOOL winner = (pos == winnerPosition);
+        BOOL winner = [randomValues[pos] isEqualToNumber:self.equation.resultAsNumber];
         self.buttons[pos] = [self makeButtonAtPosition:pos
-                                             withValue:[NSString stringWithFormat:@"%@", allValues[pos]]
+                                             withValue:[NSString stringWithFormat:@"%@", randomValues[pos]]
                                             forSuccess:winner];
         [self.view addSubview:self.buttons[pos]];
     }
