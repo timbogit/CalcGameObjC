@@ -39,12 +39,7 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
     
     [self loadSoundEffects];
     // Adding the equation label
-    self.equation = [[TSCEquation alloc] init];
-    [self addEquationLabel];
-    
-    /// TODO add the buttons
-    self.buttons = [[NSMutableArray alloc] init];
-    [self addRandomButtons];
+    [self addEquationLabelAndAnswerButtons];
 }
 
 #pragma mark - Button action handlers
@@ -54,7 +49,26 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
 }
 
 -(void)successButtonTapped:(UIButton *)sender {
-    [self.applauseSound play];
+    [UIView animateWithDuration:1.25
+                     animations:^{
+                         self.equationLabel.alpha = 0.f;
+                         self.equationLabel.transform = CGAffineTransformMakeScale(0.1f, 0.1f);
+                         [self.applauseSound play];
+                     }
+                     completion:^(BOOL finished) {
+                         self.equationLabel.text =
+                            [self.equationLabel.text stringByReplacingOccurrencesOfString:@"?"
+                                                                               withString:self.equation.result];
+                         [UIView animateWithDuration:6.f
+                                          animations: ^{
+                                              self.equationLabel.alpha = 1.f;
+                                              self.equationLabel.transform = CGAffineTransformIdentity;
+                                          }
+                                          completion: ^(BOOL finished) {
+                                              [self removeEquationLabelAndAnswerButtons];
+                                              [self addEquationLabelAndAnswerButtons];
+                                          }];
+                     }];
 }
 
 
@@ -71,6 +85,14 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
     return answers;
 }
 
+-(void)addEquationLabelAndAnswerButtons {
+    self.equation = [[TSCEquation alloc] init];
+    [self addEquationLabel];
+
+    self.buttons = [[NSMutableArray alloc] init];
+    [self addRandomButtons];
+}
+
 -(void)addEquationLabel {
     UILabel *eqLabel = [[TSCEquationLabel alloc] initWithParentView:self.view
                                                            equation:self.equation];
@@ -82,9 +104,9 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
     NSMutableArray *randomValues = [[self answerRange] mutableCopy];
     [randomValues tsc_shuffle];
     randomValues = [[randomValues subarrayWithRange:NSMakeRange(0, NUMBER_OF_ANSWERS)] mutableCopy];
-    [randomValues addObject: self.equation.result];
+    [randomValues addObject: self.equation.resultAsNumber];
     NSArray *allValues = [[NSSet setWithArray:randomValues] allObjects];
-    NSUInteger winnerPosition = [allValues indexOfObject:self.equation.result];
+    NSUInteger winnerPosition = [allValues indexOfObject:self.equation.resultAsNumber];
     
     for (int pos=0; pos < NUMBER_OF_ANSWERS; pos++) {
         BOOL winner = (pos == winnerPosition);
@@ -94,6 +116,21 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
         [self.view addSubview:self.buttons[pos]];
     }
     
+}
+
+-(void)removeEquationLabelAndAnswerButtons {
+    if (self.equationLabel) {
+        [self.equationLabel removeFromSuperview];
+    }
+    self.equationLabel = nil;
+
+    for (int i=0; i < [self.buttons count]; i++) {
+        if (self.buttons[i]) {
+            [self.buttons[i] removeFromSuperview];
+            self.buttons[i] = [NSNull null] ;
+        }
+    }
+    self.buttons = nil;
 }
 
 -(UIButton *)makeButtonAtPosition:(NSUInteger)pos

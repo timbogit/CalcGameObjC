@@ -39,7 +39,7 @@ static OperationBlock const DIVIDE_BY_OPERATION = ^(NSArray *operands){
 
 @interface TSCEquation()
 
-@property (strong, nonatomic, readwrite) NSNumber *result;
+@property (strong, nonatomic, readwrite) NSString *result;
 @property (strong, nonatomic, readwrite) NSString *operator;
 @property (strong, nonatomic, readwrite) NSMutableArray *operands;
 
@@ -54,7 +54,7 @@ static OperationBlock const DIVIDE_BY_OPERATION = ^(NSArray *operands){
     if (self) {
         _operator = [operator copy];
         _operands = [operands mutableCopy];
-        _result = [self calculateResult];
+        _result = [[self calculateResult] description];
         
     }
     return self;
@@ -74,7 +74,10 @@ static OperationBlock const DIVIDE_BY_OPERATION = ^(NSArray *operands){
                                         self.operands[1]];
 }
 
-// TODO: add a result Accessor that calculates the result based on the operands / operator
+-(NSNumber *)resultAsNumber {
+    return [NSNumber numberWithLong:[self.result integerValue]];
+}
+
 
 + (OperationBlock)operationBlockForOperator:(NSString *)operator {
     static NSDictionary *opsToOperations;

@@ -10,10 +10,11 @@
 #define CalcGame_TSCEquation_h
 @interface TSCEquation : NSObject
 
-@property (strong, nonatomic, readonly) NSNumber *result;
+@property (strong, nonatomic, readonly) NSString *result;
 
 - (instancetype)initWithOperator:(NSString *)operator
                         operands:(NSArray *)operands;
+-(NSNumber *)resultAsNumber;
 @end
 
 #endif
