@@ -15,6 +15,8 @@
 @property (strong, nonatomic, readonly) NSArray *operands;
 
 
+- (instancetype)initWithOperator:(NSString *)operator
+                        operands:(NSArray *)operands;
 @end
 
 #endif

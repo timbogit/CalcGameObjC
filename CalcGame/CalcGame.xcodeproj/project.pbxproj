@@ -18,6 +18,8 @@
 		22F262721AAB7C2B00936042 /* fail-buzzer.caf in Resources */ = {isa = PBXBuildFile; fileRef = 22F2626F1AAB7C2B00936042 /* fail-buzzer.caf */; };
 		22F262731AAB7C2B00936042 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F262701AAB7C2B00936042 /* icon.png */; };
 		22F262751AAB837C00936042 /* TSCEquation.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F262741AAB837C00936042 /* TSCEquation.m */; };
+		22F2627A1AAB9B9900936042 /* TSCEquationLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F262791AAB9B9900936042 /* TSCEquationLabel.m */; };
+		22F2627D1AABC13800936042 /* NSMutableArray+TSCShuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F2627C1AABC13800936042 /* NSMutableArray+TSCShuffling.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,10 @@
 		22F262701AAB7C2B00936042 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		22F262741AAB837C00936042 /* TSCEquation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCEquation.m; sourceTree = "<group>"; };
 		22F262761AAB83AA00936042 /* TSCEquation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSCEquation.h; sourceTree = "<group>"; };
+		22F262781AAB9B9900936042 /* TSCEquationLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCEquationLabel.h; sourceTree = "<group>"; };
+		22F262791AAB9B9900936042 /* TSCEquationLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCEquationLabel.m; sourceTree = "<group>"; };
+		22F2627B1AABC13800936042 /* NSMutableArray+TSCShuffling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+TSCShuffling.h"; sourceTree = "<group>"; };
+		22F2627C1AABC13800936042 /* NSMutableArray+TSCShuffling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+TSCShuffling.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,8 @@
 				22F262511AAB6ED500936042 /* Images.xcassets */,
 				22F262441AAB6ED500936042 /* Supporting Files */,
 				22F262771AAB83B500936042 /* Model */,
+				22F262781AAB9B9900936042 /* TSCEquationLabel.h */,
+				22F262791AAB9B9900936042 /* TSCEquationLabel.m */,
 			);
 			path = CalcGame;
 			sourceTree = "<group>";
@@ -137,6 +145,8 @@
 			children = (
 				22F262741AAB837C00936042 /* TSCEquation.m */,
 				22F262761AAB83AA00936042 /* TSCEquation.h */,
+				22F2627B1AABC13800936042 /* NSMutableArray+TSCShuffling.h */,
+				22F2627C1AABC13800936042 /* NSMutableArray+TSCShuffling.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -246,8 +256,10 @@
 			files = (
 				22F262751AAB837C00936042 /* TSCEquation.m in Sources */,
 				22F2624D1AAB6ED500936042 /* TSCCalcGameViewController.m in Sources */,
+				22F2627A1AAB9B9900936042 /* TSCEquationLabel.m in Sources */,
 				22F2624A1AAB6ED500936042 /* TSCCalcGameAppDelegate.m in Sources */,
 				22F262471AAB6ED500936042 /* main.m in Sources */,
+				22F2627D1AABC13800936042 /* NSMutableArray+TSCShuffling.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

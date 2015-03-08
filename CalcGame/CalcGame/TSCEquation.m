@@ -30,7 +30,7 @@ static NSString *const EQUATION_DIVISION_OPERATOR = @"/";
 {
     self = [super init];
     if (self) {
-        _result = @42;
+        _result = @13;
         _operator = [operator copy];
         _operands = [operands mutableCopy];
         
@@ -44,4 +44,13 @@ static NSString *const EQUATION_DIVISION_OPERATOR = @"/";
     return [self initWithOperator:EQUATION_ADDITION_OPERATOR
                   operands:@[@(arc4random_uniform(10)), @(arc4random_uniform(10))]];
 }
+
+-(NSString *)description {
+    return [NSString stringWithFormat:@"%@ %@ %@ = ?",
+                                        self.operands[0],
+                                        self.operator,
+                                        self.operands[1]];
+}
+
+// TODO: add a result Accessor that calculates the result based on the operands / operator
 @end
