@@ -13,15 +13,13 @@
 #import "NSMutableArray+TSCShufflingAndReversing.h"
 
 static NSUInteger const NUMBER_OF_ANSWERS = 9;
-//static NSIndexSet *const ANSWER_INDEXES [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1,9)];
-//static NSMutableArray   *const ANSWER_RANGE = 0..((BUTTONS + 1) * 2)
 
 @interface TSCCalcGameViewController ()
-@property (nonatomic,strong) AVAudioPlayer     *failSound;
-@property (nonatomic,strong) AVAudioPlayer     *applauseSound;
-@property (nonatomic,strong) TSCEquation       *equation;
-@property (nonatomic,weak)   IBOutlet UILabel  *equationLabel;
-@property (nonatomic,strong) NSMutableArray    *buttons;
+@property (nonatomic,strong)        AVAudioPlayer     *failSound;
+@property (nonatomic,strong)        AVAudioPlayer     *applauseSound;
+@property (nonatomic,strong)        TSCEquation       *equation;
+@property (nonatomic,weak) IBOutlet TSCEquationLabel  *equationLabel;
+@property (nonatomic,strong)        NSMutableArray    *buttons;
 
 @end
 
@@ -38,7 +36,7 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
     self.view.userInteractionEnabled = YES;
     
     [self loadSoundEffects];
-    // Adding the equation label
+    // Adding the equation label and answer buttons
     [self addEquationLabelAndAnswerButtons];
 }
 
