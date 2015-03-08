@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic, readonly) NSString *result;
 
-- (instancetype)initWithOperator:(NSString *)operator
+-(instancetype)initWithOperator:(NSString *)operator
                         operands:(NSArray *)operands;
 -(NSNumber *)resultAsNumber;
 @end
