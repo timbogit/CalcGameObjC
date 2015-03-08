@@ -45,6 +45,7 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
 #pragma mark - Button action handlers
 
 -(void)failureButtonTapped:(UIButton *)sender {
+    self.failSound.currentTime = 0.0f;
     [self.failSound play];
 }
 
@@ -59,7 +60,7 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
                          self.equationLabel.text =
                             [self.equationLabel.text stringByReplacingOccurrencesOfString:@"?"
                                                                                withString:self.equation.result];
-                         [UIView animateWithDuration:6.f
+                         [UIView animateWithDuration:1.25f
                                           animations: ^{
                                               self.equationLabel.alpha = 1.f;
                                               self.equationLabel.transform = CGAffineTransformIdentity;
@@ -67,6 +68,8 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
                                           completion: ^(BOOL finished) {
                                               [self removeEquationLabelAndAnswerButtons];
                                               [self addEquationLabelAndAnswerButtons];
+                                              [self.applauseSound stop];
+                                              self.applauseSound.currentTime = 0.0f;
                                           }];
                      }];
 }
