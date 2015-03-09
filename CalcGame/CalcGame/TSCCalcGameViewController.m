@@ -44,6 +44,11 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
     [self addSwipeLeftToResetScoresAndTries];
 }
 
+- (NSUInteger) supportedInterfaceOrientations {
+    // On all devices, return portrait or portrait upside-down
+    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+}
+
 #pragma mark - Button action handlers
 
 -(void)failureButtonTapped:(UIButton *)sender {
