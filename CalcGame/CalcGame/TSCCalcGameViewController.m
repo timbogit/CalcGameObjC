@@ -11,6 +11,7 @@
 #import "TSCEquation.h"
 #import "TSCEquationLabel.h"
 #import "NSMutableArray+TSCShufflingAndReversing.h"
+#import "TSCSettingsViewController.h"
 
 static NSUInteger const NUMBER_OF_ANSWERS = 9;
 
@@ -31,9 +32,12 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
 
 
 #pragma mark - UIViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationItem.title = @"CalcGame";
+    [self.navigationItem setRightBarButtonItem: [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(transitonToSettingsController)] animated:YES];
     self.view = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"background.jpg"]];
     self.view.frame = [[UIScreen mainScreen] applicationFrame];
     self.view.userInteractionEnabled = YES;
@@ -42,11 +46,6 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
     [self addEquationLabelAndAnswerButtons];
     [self addScoreAndTriesLabels];
     [self addSwipeLeftToResetScoresAndTries];
-}
-
-- (NSUInteger) supportedInterfaceOrientations {
-    // On all devices, return portrait or portrait upside-down
-    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
 }
 
 #pragma mark - Button action handlers
@@ -89,11 +88,17 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
 #pragma mark - gesture recognizer actions
 
 -(void)didSwipeLeft:(UISwipeGestureRecognizer *)sender {
-    [self updateScoreWithScore:0];
-    [self updateTriesWithTries:0];
+    [self transitonToSettingsController];
 }
 
 #pragma mark - helper methods
+
+-(void)transitonToSettingsController {
+    TSCSettingsViewController *settingsController = [[TSCSettingsViewController alloc] init];
+    settingsController.gameController = self;
+    [self.navigationController pushViewController:settingsController animated:YES];
+
+}
 
 -(NSArray *)answerRange {
     static NSMutableArray *answers;
@@ -135,6 +140,11 @@ static NSUInteger const NUMBER_OF_ANSWERS = 9;
     triesLabel.alpha = 0.90f;
     self.triesLabel = triesLabel;
     [self.view addSubview:self.triesLabel];
+    [self updateTriesWithTries:0];
+}
+
+-(void)resetScoresAndTries {
+    [self updateScoreWithScore:0];
     [self updateTriesWithTries:0];
 }
 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		224F1B011AAFC14000586C17 /* TSCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224F1AFF1AAFC14000586C17 /* TSCSettingsViewController.m */; };
+		224F1B021AAFC14000586C17 /* TSCSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224F1B001AAFC14000586C17 /* TSCSettingsViewController.xib */; };
+		224F1B051AAFCA4900586C17 /* TSCNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224F1B041AAFCA4900586C17 /* TSCNavController.m */; };
 		22F262471AAB6ED500936042 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F262461AAB6ED500936042 /* main.m */; };
 		22F2624A1AAB6ED500936042 /* TSCCalcGameAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F262491AAB6ED500936042 /* TSCCalcGameAppDelegate.m */; };
 		22F2624D1AAB6ED500936042 /* TSCCalcGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F2624C1AAB6ED500936042 /* TSCCalcGameViewController.m */; };
@@ -33,6 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		224F1AFE1AAFC14000586C17 /* TSCSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCSettingsViewController.h; sourceTree = "<group>"; };
+		224F1AFF1AAFC14000586C17 /* TSCSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCSettingsViewController.m; sourceTree = "<group>"; };
+		224F1B001AAFC14000586C17 /* TSCSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSCSettingsViewController.xib; sourceTree = "<group>"; };
+		224F1B031AAFCA4900586C17 /* TSCNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCNavController.h; sourceTree = "<group>"; };
+		224F1B041AAFCA4900586C17 /* TSCNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCNavController.m; sourceTree = "<group>"; };
 		22F262411AAB6ED500936042 /* CalcGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalcGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F262451AAB6ED500936042 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22F262461AAB6ED500936042 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -100,11 +108,16 @@
 				22F262491AAB6ED500936042 /* TSCCalcGameAppDelegate.m */,
 				22F2624B1AAB6ED500936042 /* TSCCalcGameViewController.h */,
 				22F2624C1AAB6ED500936042 /* TSCCalcGameViewController.m */,
+				224F1B031AAFCA4900586C17 /* TSCNavController.h */,
+				224F1B041AAFCA4900586C17 /* TSCNavController.m */,
 				22F262511AAB6ED500936042 /* Images.xcassets */,
 				22F262441AAB6ED500936042 /* Supporting Files */,
 				22F262771AAB83B500936042 /* Model */,
 				22F262781AAB9B9900936042 /* TSCEquationLabel.h */,
 				22F262791AAB9B9900936042 /* TSCEquationLabel.m */,
+				224F1AFE1AAFC14000586C17 /* TSCSettingsViewController.h */,
+				224F1AFF1AAFC14000586C17 /* TSCSettingsViewController.m */,
+				224F1B001AAFC14000586C17 /* TSCSettingsViewController.xib */,
 			);
 			path = CalcGame;
 			sourceTree = "<group>";
@@ -233,6 +246,7 @@
 			files = (
 				22F2626D1AAB7BF500936042 /* background.jpg in Resources */,
 				22F262521AAB6ED500936042 /* Images.xcassets in Resources */,
+				224F1B021AAFC14000586C17 /* TSCSettingsViewController.xib in Resources */,
 				22F262731AAB7C2B00936042 /* icon.png in Resources */,
 				22F262721AAB7C2B00936042 /* fail-buzzer.caf in Resources */,
 				22F2626B1AAB746F00936042 /* Default-568h@2x.png in Resources */,
@@ -254,11 +268,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				224F1B051AAFCA4900586C17 /* TSCNavController.m in Sources */,
 				22F262751AAB837C00936042 /* TSCEquation.m in Sources */,
 				22F2624D1AAB6ED500936042 /* TSCCalcGameViewController.m in Sources */,
 				22F2627A1AAB9B9900936042 /* TSCEquationLabel.m in Sources */,
 				22F2624A1AAB6ED500936042 /* TSCCalcGameAppDelegate.m in Sources */,
 				22F262471AAB6ED500936042 /* main.m in Sources */,
+				224F1B011AAFC14000586C17 /* TSCSettingsViewController.m in Sources */,
 				22F2627D1AABC13800936042 /* NSMutableArray+TSCShufflingAndReversing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

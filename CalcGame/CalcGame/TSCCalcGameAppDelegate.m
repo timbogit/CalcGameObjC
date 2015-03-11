@@ -8,6 +8,7 @@
 
 #import "TSCCalcGameAppDelegate.h"
 #import "TSCCalcGameViewController.h"
+#import "TSCNavController.h"
 
 @interface TSCCalcGameAppDelegate ()
 
@@ -24,8 +25,11 @@
     TSCCalcGameViewController *calcGameVC = [[TSCCalcGameViewController alloc] init];
     calcGameVC.edgesForExtendedLayout = UIRectEdgeNone;
     
-    // Place a TSCCalcGameViewController view in the window hierarchy
-    self.window.rootViewController = calcGameVC;
+    // Place a TSCCalcGameViewController inside a UINavigationController
+    TSCNavController *navController = [[TSCNavController alloc] initWithRootViewController:calcGameVC];
+    
+    // Place the navigation controller at the root of the hierarchy
+    self.window.rootViewController = navController;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
